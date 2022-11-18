@@ -1,0 +1,53 @@
+{
+    "name": "mawuva/laravel-user-feature-set",
+    "description": "A set of feature related to users",
+    "keywords": [
+        "mawuva",
+        "laravel-user-feature-set"
+    ],
+    "homepage": "https://github.com/mawuva/laravel-user-feature-set",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ephraïm Seddor",
+            "email": "seddorephraim7@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^7.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mawuva\\UserFeatureSet\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mawuva\\UserFeatureSet\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mawuva\\UserFeatureSet\\UserFeatureSetServiceProvider"
+            ],
+            "aliases": {
+                "UserFeatureSet": "Mawuva\\UserFeatureSet\\UserFeatureSetFacade"
+            }
+        }
+    }
+}
