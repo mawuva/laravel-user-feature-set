@@ -1,10 +1,10 @@
-# Very short description of the package
+# A set of feature related to users
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mawuva/laravel-user-feature-set.svg?style=flat-square)](https://packagist.org/packages/mawuva/laravel-user-feature-set)
 [![Total Downloads](https://img.shields.io/packagist/dt/mawuva/laravel-user-feature-set.svg?style=flat-square)](https://packagist.org/packages/mawuva/laravel-user-feature-set)
 ![GitHub Actions](https://github.com/mawuva/laravel-user-feature-set/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This packahe provide you with a set of features that you can use to enhance your work while working on the users management in your project.
 
 ## Installation
 
@@ -16,9 +16,68 @@ composer require mawuva/laravel-user-feature-set
 
 ## Usage
 
-```php
-// Usage description here
+After installing the package, just run the following command:
+
+```bash
+php artisan user-feature-set:install
 ```
+
+This command will install, setup and publish the package files in your project.
+It will also add two users in your database with the following credentials:
+
+```text
+email: admin@admin.com
+password: password
+
+email: user@user.com
+password: password
+```
+
+## Features
+
+This package will provide you the following features:
+
+
+```php
+use Mawuva\UserFeatureSet\DataTransferObjects\StoreUserDTO;
+use Mawuva\UserFeatureSet\Facades\UserFeatureSet;
+
+$data = UserDTO::from([
+    "name" => "Test",
+    "first_name" => "Test",
+    "email" => "test@example.com",
+    "password" => "password",
+])
+
+// Create a new user
+$user = UserFeatureSet::storeUserData($data);
+
+// Update the existing user data
+$user = UserFeatureSet::updateUserData($data);
+
+// Check user credentials
+$user = UserFeatureSet::checkUserCredentials("test@example.com");
+
+// Change user password
+$id = "1"
+$user = UserFeatureSet::changeUserPassword($id, "password");
+```
+
+The table bellow show you the attributes that you can use in order to manipulate your user model.
+
+| Attributes |
+|----------|
+| name |
+| first_name |
+| gender |
+| email |
+| password |
+| phone_number |
+| whatsapp_number |
+| username |
+| is_admin |
+| has_agreed_with_policy_and_terms_at |
+| last_login_at |
 
 ### Testing
 

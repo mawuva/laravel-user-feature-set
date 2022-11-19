@@ -38,13 +38,14 @@ class UserFeatureSetFactory
     /**
      * Create user account.
      *
-     * @param \Mawuva\UserFeatureSet\DataTransferObjects\StoreUserDTO $storeUserDTO
+     * @param \Mawuva\UserFeatureSet\DataTransferObjects\UserDTO $userDTO
+     * @param int|string $id
      *
      * @return mixed
      */
-    public function updateUserData(UserDTO $userDTO)
+    public function updateUserData(UserDTO $userDTO, $id)
     {
-        return app(UpdateUserData::class) ->execute($userDTO);
+        return app(UpdateUserData::class) ->execute($userDTO, $id);
     }
 
     /**
@@ -102,7 +103,7 @@ class UserFeatureSetFactory
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
-    public function execute(string $credentials): ?Model
+    public function checkUserCredentials(string $credentials): ?Model
     {
         $user = app(config('user-feature-set.user.model'));
 
