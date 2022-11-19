@@ -17,12 +17,12 @@ class UserFeatureSetServiceProvider extends ServiceProvider
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'user-feature-set');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'user-feature-set');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('user-feature-set.php'),
+                __DIR__.'/../config/user-feature-set.php' => config_path('user-feature-set.php'),
             ], 'config');
 
             // Publishing the views.
