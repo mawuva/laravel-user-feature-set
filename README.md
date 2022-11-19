@@ -1,4 +1,4 @@
-# A set of feature related to users
+# User Feature Set - A set of feature related to users
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mawuva/laravel-user-feature-set.svg?style=flat-square)](https://packagist.org/packages/mawuva/laravel-user-feature-set)
 [![Total Downloads](https://img.shields.io/packagist/dt/mawuva/laravel-user-feature-set.svg?style=flat-square)](https://packagist.org/packages/mawuva/laravel-user-feature-set)
