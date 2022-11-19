@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 use Mawuva\UserFeatureSet\DataTransferObjects\UserDTO;
 use Mawuva\UserFeatureSet\Facades\UserFeatureSet;
 
-class StoreUserData
+class UpdateUserData
 {
     /**
      * Execute action
      *
      * @param \Mawuva\UserFeatureSet\DataTransferObjects\UserDTO $userDTO
+     * @param int|string $id
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function execute(UserDTO $userDTO): Model
+    public function execute(UserDTO $userDTO, $id): Model
     {
-        $user = app(config('user-feature-set.user.model'));
+        $user = UserFeatureSet::getUserById($id);
 
         $user ->name        = $userDTO ->name;
         $user ->email       = $userDTO ->email;
-        $user ->password    = UserFeatureSet::handlePassword($userDTO ->password);
 
         if ($userDTO ->first_name !== null) { $user ->first_name  = $userDTO ->first_name; }
 
@@ -30,7 +30,6 @@ class StoreUserData
         if ($userDTO ->phone_number !== null) { $user ->phone_number  = $userDTO ->phone_number; }
         if ($userDTO ->whatsapp_number !== null) { $user ->whatsapp_number  = $userDTO ->whatsapp_number; }
         if ($userDTO ->is_admin !== null) { $user ->is_admin  = $userDTO ->is_admin; }
-        if ($userDTO ->agree_with_policy_and_terms !== null) { $user ->agree_with_policy_and_terms  = $userDTO ->agree_with_policy_and_terms; }
 
         $user ->save();
 

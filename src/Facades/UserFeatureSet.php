@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \Mawuva\UserFeatureSet\Skeleton\SkeletonClass
  */
-class UserFeatureSetFacade extends Facade
+class UserFeatureSet extends Facade
 {
     /**
      * Get the registered name of the component.

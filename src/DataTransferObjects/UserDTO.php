@@ -4,7 +4,7 @@ namespace Mawuva\UserFeatureSet\DataTransferObjects;
 
 use Spatie\LaravelData\Data;
 
-class StoreUserDTO extends Data
+class UserDTO extends Data
 {
     public string|null $name;
     public string|null $first_name;

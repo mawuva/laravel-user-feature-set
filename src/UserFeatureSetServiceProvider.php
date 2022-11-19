@@ -3,7 +3,8 @@
 namespace Mawuva\UserFeatureSet;
 
 use Illuminate\Support\ServiceProvider;
-use Mawuva\UserFeatureSet\UserFeatureSet;
+use Mawuva\UserFeatureSet\Console\InstallCommand;
+use Mawuva\UserFeatureSet\UserFeatureSetFactory;
 
 class UserFeatureSetServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,10 @@ class UserFeatureSetServiceProvider extends ServiceProvider
                 __DIR__.'/../config/user-feature-set.php' => config_path('user-feature-set.php'),
             ], 'config');
 
+            $this->publishes([
+                __DIR__.'/../database/seeders/publish' => database_path('seeders'),
+            ], 'seeders');
+
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/user-feature-set'),
@@ -41,7 +46,9 @@ class UserFeatureSetServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([
+                InstallCommand::class
+            ]);
         }
     }
 
@@ -51,11 +58,11 @@ class UserFeatureSetServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'user-feature-set');
+        $this->mergeConfigFrom(__DIR__.'/../config/user-feature-set.php', 'user-feature-set');
 
         // Register the main class to use with the facade
         $this->app->singleton('user-feature-set', function () {
-            return new UserFeatureSet;
+            return new UserFeatureSetFactory;
         });
     }
 }

@@ -17,7 +17,8 @@ class AddCustomAttributesToUsersTable extends Migration
             $table ->uuid("_id") ->after("id");
             $table ->string('name')->nullable()->change();
             $table ->string('first_name') ->nullable() ->after('name');
-            $table ->string("gender") ->nullable() ->after('first_name');
+            $table ->string('username') ->nullable() ->after('first_name');
+            $table ->string("gender") ->nullable() ->after('username');
             $table ->string('phone_number') ->nullable() ->after('gender');
             $table ->string('whatsapp_number') ->nullable() ->after('phone_number');
             $table ->string("is_admin") ->nullable() ->after('whatsapp_number');

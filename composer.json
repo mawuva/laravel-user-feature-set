@@ -27,7 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Mawuva\\UserFeatureSet\\": "src"
+            "Mawuva\\UserFeatureSet\\": "src",
+            "Mawuva\\UserFeatureSet\\Database\\Seeders\\": "database/seeders"
         }
     },
     "autoload-dev": {

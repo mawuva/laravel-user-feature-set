@@ -6,6 +6,13 @@ return [
      */
     'default_password'  => 'password',
 
+    /**
+     * User configuration
+     */
+    'user'      => [
+        'model'     => App\Models\User::class
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Password history config
